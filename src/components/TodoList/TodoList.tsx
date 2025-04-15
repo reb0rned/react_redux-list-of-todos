@@ -71,34 +71,34 @@ export const TodoList: React.FC<Props> = ({setListLoader}) => {
 
   return (
     <>
-    {false && (
+        {visibleTodos.length === 0 ? (
           <p className="notification is-warning">
-          There are no todos matching current filter criteria
-        </p>
-    )}
+            There are no todos matching current filter criteria
+          </p>
+        ) : (
+          <table className="table is-narrow is-fullwidth">
+            <thead>
+              <tr>
+                <th>#</th>
 
-      <table className="table is-narrow is-fullwidth">
-        <thead>
-          <tr>
-            <th>#</th>
+                <th>
+                  <span className="icon">
+                    <i className="fas fa-check" />
+                  </span>
+                </th>
 
-            <th>
-              <span className="icon">
-                <i className="fas fa-check" />
-              </span>
-            </th>
+                <th>Title</th>
+                <th> </th>
+              </tr>
+            </thead>
 
-            <th>Title</th>
-            <th> </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {visibleTodos.map(todo => {
-            return <TodoItem todo={todo} key={todo.id}/>
-          })}
-        </tbody>
-      </table>
+            <tbody>
+              {visibleTodos.map(todo => {
+                return <TodoItem todo={todo} key={todo.id}/>
+              })}
+            </tbody>
+          </table>
+        )}
     </>
   );
 };

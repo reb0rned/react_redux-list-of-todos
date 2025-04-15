@@ -1,12 +1,12 @@
 import React from 'react';
-import { setStatus, setQuery } from '../../features/filter'
+import { setStatus, setQuery } from '../../features/filter';
 import { useAppSelector } from '../../app/store';
 import { useDispatch } from 'react-redux';
 import { Status } from '../../types/Status';
 
 export const TodoFilter: React.FC = () => {
-const {status, query} = useAppSelector(store => store.filter)
-const dispatch = useDispatch()
+  const { status, query } = useAppSelector(store => store.filter);
+  const dispatch = useDispatch();
 
   return (
     <form
@@ -16,9 +16,11 @@ const dispatch = useDispatch()
       <p className="control">
         <span className="select">
           <select
-          data-cy="statusSelect"
-          value={status}
-          onChange={(event) => {dispatch(setStatus(event.target.value as Status))}}
+            data-cy="statusSelect"
+            value={status}
+            onChange={event => {
+              dispatch(setStatus(event.target.value as Status));
+            }}
           >
             <option value="all">All</option>
             <option value="active">Active</option>
@@ -34,7 +36,9 @@ const dispatch = useDispatch()
           className="input"
           placeholder="Search..."
           value={query}
-          onChange={(event) => {dispatch(setQuery(event.target.value))}}
+          onChange={event => {
+            dispatch(setQuery(event.target.value));
+          }}
         />
         <span className="icon is-left">
           <i className="fas fa-magnifying-glass" />
@@ -47,7 +51,9 @@ const dispatch = useDispatch()
               data-cy="clearSearchButton"
               type="button"
               className="delete"
-              onClick={() => {dispatch(setQuery(''))}}
+              onClick={() => {
+                dispatch(setQuery(''));
+              }}
             />
           )}
         </span>

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Status } from '../types/Status';
 
@@ -11,12 +12,12 @@ export const filterSlice = createSlice({
   initialState,
   reducers: {
     setStatus: (state, action: PayloadAction<Status>) => {
-      state.status = action.payload
+      state.status = action.payload;
     },
     setQuery: (state, action: PayloadAction<string>) => {
-      state.query = action.payload
-    }
+      state.query = action.payload;
+    },
   },
 });
 
-export const {setStatus, setQuery} = filterSlice.actions
+export const { setStatus, setQuery } = filterSlice.actions;

@@ -5,8 +5,8 @@ import { useAppSelector } from './app/store';
 import { useState } from 'react';
 
 export const App = () => {
-  const [listLoader, setListLoader] = useState(false)
-  const currentTodo = useAppSelector(store => store.currentTodo)
+  const [listLoader, setListLoader] = useState(false);
+  const currentTodo = useAppSelector(store => store.currentTodo);
 
   return (
     <>
@@ -20,7 +20,11 @@ export const App = () => {
             </div>
 
             <div className="block">
-              {listLoader ? (<Loader />) : (<TodoList setListLoader={setListLoader}/>)}
+              {listLoader ? (
+                <Loader />
+              ) : (
+                <TodoList setListLoader={setListLoader} />
+              )}
             </div>
           </div>
         </div>
@@ -28,5 +32,5 @@ export const App = () => {
 
       {currentTodo && <TodoModal />}
     </>
-  )
+  );
 };

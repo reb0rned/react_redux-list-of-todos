@@ -17,10 +17,12 @@ export const TodoModal: React.FC = () => {
       setUserLoading(true);
       try {
         if (currentTodo) {
-          const user = await getUser(currentTodo.userId);
-          setUser(user);
+          const currentTodoUser = await getUser(currentTodo.userId);
+
+          setUser(currentTodoUser);
         }
       } catch {
+        // eslint-disable-next-line no-console
         console.warn('cannot load user!');
       } finally {
         setUserLoading(false);
@@ -36,7 +38,7 @@ export const TodoModal: React.FC = () => {
 
       <div className="modal-card">
         {userLoading ? (
-            <Loader />
+          <Loader />
         ) : (
           <>
             <header className="modal-card-head">
